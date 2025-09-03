@@ -87,6 +87,31 @@ paths:
                 items:
                   $ref: "#/components/schemas/Phone"
 
+  /phones/{id}:
+    get:
+      summary: Get a single phone by its id
+      parameters:
+        - $ref: "#/components/parameters/IdParam"
+      responses:
+        "200":
+          description: Return the wanted phone
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Phone"
+        "404":
+          description: The wanted phone was not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: The phone was not found or does not exist
+
+
 
 
 
