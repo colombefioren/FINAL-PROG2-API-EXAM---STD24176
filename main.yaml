@@ -25,5 +25,19 @@ components:
           type: number
         rom_memory:
           type: number
+
+    Phone:
+      description: The phone
+      allOf:
+        - type: object
+          properties:
+            identifier:
+              type: string
+            brand:
+              type: string
+            model:
+              type: string
+        - $ref: "#/components/schemas/Characteristic"
+
 paths:
   
