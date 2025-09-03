@@ -23,7 +23,7 @@ class PhoneModel(BaseModel):
     identifier: str
     brand: str
     model: str
-    characteristics: Characteristic | str
+    characteristics: Characteristic
 
 list_phone : List[PhoneModel] = []
 
