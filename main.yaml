@@ -73,6 +73,20 @@ paths:
                   message:
                     type: string
               example:
-                message: Phone created successfully
+                message: The phone created successfully
+
+    get:
+      summary: Get all the phones
+      responses:
+        "200":
+          description: Return the full list of phones
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Phone"
+
+
 
 
