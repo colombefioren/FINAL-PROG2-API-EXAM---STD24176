@@ -40,4 +40,14 @@ components:
         - $ref: "#/components/schemas/Characteristic"
 
 paths:
-  
+  /health:
+    get:
+      responses:
+        "200":
+          description: Get health of the server
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: Ok
+
