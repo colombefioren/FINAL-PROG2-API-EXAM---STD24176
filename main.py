@@ -31,9 +31,6 @@ list_phone : List[PhoneModel] = []
 def serialized_list_phone():
     converted_list = []
     for phone in list_phone:
-        ram_memory = phone.characteristics.ram_memory
-        rom_memory = phone.characteristics.rom_memory
-        phone.characteristics = f"ram_memory: {ram_memory} rom_memory: {rom_memory}"
         converted_list.append(phone.model_dump())
     return converted_list
 
