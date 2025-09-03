@@ -51,3 +51,28 @@ paths:
                 type: string
               example: Ok
 
+  /phones:
+    post:
+      summary: Adding a new phone
+      requestBody:
+        description: The informations of the new phone
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Phone"
+      responses:
+        "201":
+          description: The phone was well created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: Phone created successfully
+
+
