@@ -39,6 +39,10 @@ def post_list_phone(new_phone_list: List[PhoneModel]):
         list_phone.append(new_phone)
     return Response(content=json.dumps({"phones": serialized_list_phone()}),media_type="application/json",status_code=201)
 
+@app.get("/phones")
+def get_phone():
+    return Response(content=json.dumps({"phones": serialized_list_phone()}),media_type="application/json",status_code=200)
+
 
 
 
