@@ -1,3 +1,4 @@
+import json
 from typing import List
 
 from fastapi import FastAPI
@@ -31,5 +32,14 @@ def serialized_list_phone():
     for phone in list_phone:
         converted_list.append(phone.model_dump())
     return converted_list
+
+@app.post("/phones")
+def post_list_phone(new_phone_list: List[PhoneModel]):
+    for new_phone in new_phone_list:
+        list_phone.append(new_phone)
+    return Response(content=json.dumps({"phones": serialized_list_phone()}),media_type="application/json",status_code=201)
+
+
+
 
 
