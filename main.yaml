@@ -111,6 +111,25 @@ paths:
               example:
                 error: The phone was not found or does not exist
 
+  /phones/{id}/characteristic:
+    put:
+      summary: Modify the characteristic of the phone of that id
+      parameters:
+        - $ref: "#/components/parameters/IdParam"
+      requestBody:
+        description: The new characteristics
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Characteristic"
+      responses:
+        "200":
+          description: The newly updated phone
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Phone"
+
 
 
 
