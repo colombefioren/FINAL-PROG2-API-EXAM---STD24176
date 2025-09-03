@@ -43,6 +43,13 @@ def post_list_phone(new_phone_list: List[PhoneModel]):
 def get_phone():
     return Response(content=json.dumps({"phones": serialized_list_phone()}),media_type="application/json",status_code=200)
 
+@app.get("/phones/{id}")
+def get_phone_by_id(id : str):
+    for phone in list_phone:
+        if phone.identifier == id:
+            return Response(content=json.dumps(phone.model_dump()),media_type="application/json",status_code=200)
+    return Response(content=json.dumps({"error":f"The phone of if {id} does not exist or was not found"}),media_type="application/json",status_code=404)
+
 
 
 
