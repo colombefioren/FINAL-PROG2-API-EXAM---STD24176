@@ -1,3 +1,5 @@
+from typing import List
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.responses import Response
@@ -22,5 +24,12 @@ class PhoneModel(BaseModel):
     model: str
     characteristics: Characteristic
 
+list_phone : List[PhoneModel] = []
+
+def serialized_list_phone():
+    converted_list = []
+    for phone in list_phone:
+        converted_list.append(phone.model_dump())
+    return converted_list
 
 
