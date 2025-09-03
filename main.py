@@ -13,7 +13,7 @@ def get_pong():
 
 @app.get("/health")
 def get_health():
-    return Response(content="Ok",media_type="text/plain,status_code=200")
+    return Response(content="Ok",media_type="text/plain",status_code=200)
 
 class Characteristic:
     ram_memory: int
@@ -23,13 +23,15 @@ class PhoneModel(BaseModel):
     identifier: str
     brand: str
     model: str
-    characteristics: Characteristic
+    characteristics: Characteristic | str
 
 list_phone : List[PhoneModel] = []
+
 
 def serialized_list_phone():
     converted_list = []
     for phone in list_phone:
+        phone.characteristics = f"ram_memory: {phone.characteristics.ram_memory} rom_memory: {phone.characteristics.rom_memory}"
         converted_list.append(phone.model_dump())
     return converted_list
 
