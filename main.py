@@ -50,6 +50,17 @@ def get_phone_by_id(id : str):
             return Response(content=json.dumps(phone.model_dump()),media_type="application/json",status_code=200)
     return Response(content=json.dumps({"error":f"The phone of if {id} does not exist or was not found"}),media_type="application/json",status_code=404)
 
+@app.put("/phones/{id}/characteristics")
+def modify_phone_characteristics(id: str,new_characteristics: Characteristic):
+    for phone in list_phone:
+        if phone.identifier == id:
+            phone.characteristics.ram_memory = new_characteristics.ram_memory
+            phone.characteristics.rom_memory = new_characteristics.rom_memory
+            return Response(content=json.dumps(phone.model_dump()),media_type="application/json",status_code=200)
+    return Response(content=json.dumps({"error":f"The phone of if {id} does not exist or was not found"}),media_type="application/json",status_code=404)
+
+
+
 
 
 
